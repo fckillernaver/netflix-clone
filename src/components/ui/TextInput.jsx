@@ -1,51 +1,33 @@
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useRef, useCallback } from "react"
 
-// React ver 19 이상에서만 {} props drilling 에서 ref라는 속성 전달이 가능
-const TextInput = ({ inputRef, value, onChangeText, id, placeholder }) => {
-  const onChange = (e) => {
-    onChangeText(e.target.value)
-  }
-
+export const TextInput = ({ inputRef, placeholder, id, divCn, inputCn }) => {
   return (
-    <div>
-      <label htmlFor={id}>{placeholder}</label>
-      <input type="text" id={id} value={value} onChange={onChange} ref={inputRef} style={{ color: "black" }} />
+    <div className={divCn}>
+      {/* <label htmlFor={id}>{placeholder}</label> */}
+      <input type="text" id={id} ref={inputRef} placeholder={placeholder} className={inputCn} />
     </div>
   )
 }
 
-// 커스텀훅 customHook
-const useTextInput = () => {
+// custom Hook 리액트의 훅을 나만의 스타일로 만들어서 사용한다.
+export const useTextInput = () => {
   const ref = useRef()
+  const focus = useCallback(() => {
+    if (ref.current) {
+      ref.current.focus()
+    }
+  }, [ref])
 
-  const Input = useCallback(
-    ({ value, onChangeText, id, placeholder }) => {
-      // props를 받는 컴포넌가 속성으로 많은 개체들을 요구할 때 예)3개 이상
-      // 문자열이 아닐때, 객체로 만들어서 전달.
-
-      const props = {
-        value,
-        onChangeText,
-        id,
-        placeholder,
-      }
-
-      return <TextInput {...props} inputRef={ref} />
+  const Component = useCallback(
+    ({ placeholder, id, divCn, inputCn }) => {
+      return <TextInput id={id} inputRef={ref} placeholder={placeholder} divCn={divCn} inputCn={inputCn} />
     },
     [ref]
   )
 
-  const focus = () => {
-    if (ref.current) {
-      ref.current.focus()
-    }
-  }
-
   return {
-    Input,
-    focus,
     ref,
+    focus,
+    Component,
   }
 }
-
-export { TextInput, useTextInput }

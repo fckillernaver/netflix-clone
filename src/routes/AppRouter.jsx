@@ -3,7 +3,12 @@ import Home from "./Home"
 import Layout from "../components/Layout"
 import Signin from "./Signin"
 import FAQ from "./FAQ"
-import ContactUs from "./ContactUs"
+import ContactUs from "./contact-us"
+import LearnReact from "./LearnReact"
+import UseState from "./LearnReact/LearnUseState"
+import LearnUseEffect from "./LearnReact/learn-useEffect"
+import LearnUseRef from "./LearnReact/learn-useRef"
+import LearnUseMemo from "./LearnReact/learn-useMemo"
 
 const AppRouter = () => {
   return (
@@ -15,6 +20,18 @@ const AppRouter = () => {
           <Route path="faq" element={<FAQ />} />
           <Route path="contact-us" element={<ContactUs />} />
         </Route>
+
+        <Route path="/learn-react">
+          <Route index element={<LearnReact />} />
+          <Route path="useState" element={<UseState />} />
+
+          <Route path="useEffect" element={<LearnUseEffect />} />
+
+          <Route path="useRef" element={<LearnUseRef />} />
+          <Route path="useMemo" element={<LearnUseMemo />} />
+        </Route>
+
+        {/*  */}
       </Routes>
     </BrowserRouter>
   )
