@@ -1,9 +1,9 @@
 import React from "react"
 import { fMenus } from "../../assets/fakebase"
-import { Link } from "react-router-dom"
 import { Button } from "../ui/Button"
 import { HiLanguage } from "react-icons/hi2"
 import OpenColor from "open-color"
+import FooterItem from "./FooterItem"
 
 // 해당 경로로 이동함
 // <Link to={경로}>{이름}</Link>
@@ -31,19 +31,14 @@ const Footer = () => {
           rowGap: 10,
         }}
       >
-        {fMenus.map((menu, index) => {
+        {fMenus.map((menu) => {
           return (
-            <Link
-              key={index}
-              to={menu.path}
-              style={{
-                color: OpenColor.gray[5],
-                textDecoration: "underline",
-                fontSize: ".65rem",
-              }}
-            >
-              {menu.name}
-            </Link>
+            <FooterItem
+              key={menu.path}
+              {...menu}
+              //  {}안에 ...객체의변수명을 적으면 복사하는 뜻이다.
+              // 리액트 컴포넌트에 이렇게 하는 것은 복사한 객체의 전부를 전달해준다는 뜻이다.
+            />
           )
         })}
       </ul>
