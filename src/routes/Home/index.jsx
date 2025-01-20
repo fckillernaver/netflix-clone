@@ -6,6 +6,7 @@ import { anotherReasons } from "../../assets/fakebase"
 import AnotherReasonItem from "./AnotherReasonItem"
 import More from "./More"
 import FAQ from "./FAQ"
+import Start from "./Start"
 
 const Home = () => {
   const Text = useTextInput()
@@ -19,6 +20,7 @@ const Home = () => {
   return (
     <div className={styles.wrap}>
       <h1 className={styles.h1}>Home</h1>
+      <Start />
       <More />
       <div className={styles.container.div}>
         <p className={styles.container.p}>가입해야 하는 또 다른 이유</p>
