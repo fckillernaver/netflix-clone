@@ -5,6 +5,7 @@ import OpenColor from "open-color"
 import { useEffect } from "react"
 import { user } from "../../assets/fakebase"
 import { Button } from "../ui/Button"
+import styles from "./header.css"
 
 const Header = () => {
   const navi = useNavigate()
@@ -29,35 +30,11 @@ const Header = () => {
   }, [pathname]) // [] dependency 디펜던시 의존성
 
   return (
-    <header
-      className="flex justify-between items-center fixed top-0 left-0 w-full text-gray-100 z-50 bg-gray-900"
-      style={{
-        borderBottom: `1px solid ${OpenColor.gray[7]}`,
-        // borderColor: OpenColor.gray[7],
-        height: "auto",
-        paddingRight: 10,
-      }}
-    >
-      <Button
-        className="h-10 px-2.5 text-xl text-red-600"
-        style={{
-          fontSize: 20,
-          color: OpenColor.red[8],
-          padding: "20px 10px",
-          height: "auto",
-        }}
-        onClick={onT}
-      >
+    <header className={styles.header}>
+      <button className={styles.title} onClick={onT}>
         <RiNetflixFill />
-      </Button>
-      <ul
-        className="flex gap-x-2.5"
-        style={{
-          display: "flex",
-          columnGap: 10,
-          alignItems: "center",
-        }}
-      >
+      </button>
+      <ul className={styles.ul}>
         <li>
           <Button
             style={{

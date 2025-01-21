@@ -3,6 +3,8 @@ import { useMyContext } from "../../contextApi/ContextProvider"
 import { users } from "../../assets/fakebase"
 import Input from "../../components/ui/Input"
 import { useNavigate } from "react-router-dom"
+import CheckBox from "../../components/ui/CheckBox"
+import styles from "./signin.css"
 
 const Signin = () => {
   const navi = useNavigate()
@@ -10,6 +12,7 @@ const Signin = () => {
   const { email } = useMyContext()
   const [value, setValue] = useState(email)
   const [pwd, setPwd] = useState("")
+  const [checked, setChecked] = useState(false)
 
   const emailMessage = useMemo(() => {
     if (value.length === 0) {
@@ -91,23 +94,39 @@ const Signin = () => {
     [emailMessage, pwdMessage, value, pwd, navi]
   )
 
+  useEffect(() => {
+    // window === document 불러와서 스크롤 조절하는 방법
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, [])
+
   return (
     <div>
-      <form action="" onSubmit={onSubmit}>
+      <form action="" onSubmit={onSubmit} className={styles.form}>
         <Input id="email" placeholder={"이메일 주소"} setValue={setValue} value={value} />
         <Input id="pwd" placeholder={"비밀번호"} setValue={setPwd} value={pwd} type="password" />
 
-        <button>로그인</button>
-        <button type="button">비밀번호를 잊으셨나요?</button>
-        <div>
-          <input type="checkbox" name="" id="check1" />
-          <label htmlFor="check1">로그인 정보 저장</label>
-        </div>
-        <button>
-          Netflix 회원이 아닌가요? <span>지금 가입하세요.</span>
+        <button className={styles.login}>로그인</button>
+        <button type="button" className={styles.forgot}>
+          비밀번호를 잊으셨나요?
         </button>
+
+        <CheckBox
+          state={checked}
+          onClick={() => {
+            setChecked((prev) => !prev)
+          }}
+          label={"로그인 정보를 저장하겠습니다."}
+          id="check"
+        />
+
+        <button className={styles.new}>
+          Netflix 회원이 아닌가요? <span className={styles.span}>지금 가입하세요.</span>
+        </button>
+        {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}
       </form>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
   )
 }

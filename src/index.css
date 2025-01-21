@@ -24,12 +24,10 @@ input {
 }
 
 button {
-  background-color: whitesmoke;
   padding: 10px;
   border-radius: 4px;
 }
 
 button:hover {
-  background-color: rgb(211, 210, 210);
   opacity: 0.8;
 }

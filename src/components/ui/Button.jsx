@@ -1,20 +1,16 @@
 // Props Drilling
 // 다른 곳에서 아래의 컴포넌트를 불러 쓸 때 전달해주는 값
 
+import styles from "./button.css"
+
 // size = 'sm' |'lg'|'xl'
-const Button = ({ onClick, type, children, style }) => {
+const Button = ({ onClick, type, children, style, className }) => {
   return (
     <button
       onClick={onClick}
       type={type ?? "button"}
-      style={{
-        padding: "5px 10px",
-        borderRadius: 4,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        ...style, // ...변수명 복사하기 객체를 복사할 때는 {} 안에 ..., 배열을 복사할 때는 [] 안에 ...
-      }}
+      style={style}
+      className={className ? `${className} ${styles}` : styles}
     >
       {/* 조건 ?? 연산자 <==> 조건 && 연산자 */}
       {/* 앞의 조건이 부합하지 않을 때 실행하는 코드를 ?? 오른편에 작성 */}
