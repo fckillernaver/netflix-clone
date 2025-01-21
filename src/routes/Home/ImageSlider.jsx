@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import styles from "./imageSlider.css"
 import { imgs } from "../../assets/fakebase"
 import Slider from "react-slick"
@@ -52,27 +52,39 @@ const ImageSlider = () => {
     }
   }, [])
 
+  const Next = useCallback(() => {
+    return (
+      <button onClick={onNext} className={styles.isNext}>
+        next
+      </button>
+    )
+  }, [onNext])
   return (
     <div
       style={{
         border: "1px solid",
         padding: 100,
       }}
+      className="slider-container"
     >
       <h1>Image Slider</h1>
-      <Slider dots infinite speed={500} slidesToScroll={3} slidesToShow={3}>
-        <div
-          style={{
-            padding: 100,
-            border: "1px solid",
-          }}
-        >
-          1
-        </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+      <Slider dots infinite speed={500} slidesToScroll={3} slidesToShow={3} autoplay nextArrow={<Next />}>
+        {imgs.map((img, index) => {
+          return (
+            <img
+              key={img.title}
+              src={imgs[index].imgUrl}
+              alt=""
+              width={width}
+              height={height}
+              className={styles.isImg}
+              style={{
+                width, // width: width  변수의이름은 값의 이름이 되고 변수의 값은 그 값의 값이 된다.
+                height,
+              }}
+            />
+          )
+        })}
       </Slider>
       {/* <div className={styles.isContainer}>
         <div className={styles.isWrap} style={{ width, transform: `translateX(-${currentIndex * width}px)` }}>
