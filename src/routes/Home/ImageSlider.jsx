@@ -68,7 +68,7 @@ export default ImageSlider
 
 const ImgItem = ({ imgUrl, title }) => {
   return (
-    <div className={styles.item.container}>
+    <div className={styles.item.container} style={{}}>
       <p className={styles.item.title}>{title}</p>
       <img src={imgUrl} alt={title} width={100} height={100} className={styles.item.img} />
     </div>
