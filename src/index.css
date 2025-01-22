@@ -1,7 +1,8 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 /* reset.css */
 * {
   padding: 0;
@@ -9,6 +10,7 @@
   box-sizing: border-box;
   line-height: 1.6;
   font-weight: 300;
+  /* font-family: "Open Sans", serif; */
 }
 
 ul {
@@ -30,4 +32,20 @@ button {
 
 button:hover {
   opacity: 0.8;
+}
+
+.slick-slider {
+  /* height: 500px; */
+}
+
+.slick-list {
+  height: 100%;
+}
+
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide {
+  padding: 10px;
 }

@@ -1,6 +1,4 @@
-import { useEffect } from "react"
 import { useTextInput } from "../../components/ui/TextInput"
-import OpenColor from "open-color"
 import styles from "./home.css"
 import { anotherReasons } from "../../assets/fakebase"
 import AnotherReasonItem from "./AnotherReasonItem"

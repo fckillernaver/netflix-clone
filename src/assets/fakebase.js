@@ -82,3 +82,5 @@ export const imgs = [
   { title: "사랑의 하츄핑", imgUrl: "https://cdn.pixabay.com/photo/2023/02/01/10/37/sunset-7760143_1280.jpg" },
   { title: "파일럿", imgUrl: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg" },
 ]
+
+export const openSans = '"Open Sans", serif'
