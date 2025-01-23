@@ -16,7 +16,10 @@ const initialState = {
 const Context = createContext(initialState)
 
 const ContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({
+    email: "tester@test.com",
+    uid: "tester1",
+  })
 
   const onUserLogin = (email, uid) => {
     setUser({ email, uid })
@@ -33,8 +36,8 @@ const ContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log({ email })
-  }, [email])
+    console.log({ user })
+  }, [user])
 
   return (
     <Context.Provider

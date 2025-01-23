@@ -18,7 +18,7 @@ const styles = {
       marginTop: 1,
       overflow: "hidden",
       transition: "all .3s",
-      padding: 0,
+      padding: "0 20px",
       height: 0,
     },
     variants: {

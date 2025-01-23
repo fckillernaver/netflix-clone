@@ -13,14 +13,16 @@ import Todo from "./todo"
 import PDSample from "./LearnReact/props-drilling/sample1"
 import PropsDrilling2 from "./props-drilling"
 import RandomNumber from "./random-number"
+import { useMyContext } from "../contextApi/ContextProvider"
 
 const AppRouter = () => {
+  const { user } = useMyContext()
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Signin />} />
+          {!user && <Route path="login" element={<Signin />} />}
           <Route path="faq" element={<FAQ />} />
           <Route path="contact-us" element={<ContactUs />} />
         </Route>
